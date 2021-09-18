@@ -14,7 +14,7 @@ app "waypoint-cd-test" {
       use "docker" {
         image = "ghcr.io/clarkbains/waypoint-cd-test"
         tag   = "latest"
-        encoded_auth = filebase64("/home/cbains/Development/vagrant/waypoint-test/waypoint-examples/nomad-waypoint-integration-tests/auth.json")
+   #     encoded_auth = filebase64("/home/cbains/Development/vagrant/waypoint-test/waypoint-examples/nomad-waypoint-integration-tests/auth.json")
       }
     }
   }
