@@ -1,4 +1,14 @@
 project = "example-nodejs"
+
+  variable "ghcr-creds" {
+    type = object({
+      email = number
+      username = number
+      pat = string
+    })
+#          sensitive = true
+  
+  }
   runner {
     enabled = true
     data_source "git" {
@@ -11,14 +21,7 @@ app "nomad-waypoint-integration-tests" {
   build {
     use "pack" {}
     registry {
-      variable "ghcr-creds" {
-          type = object({
-            email = number
-            username = number
-            pat = string
-          })
-#          sensitive = true
-        }
+
       use "docker" {
         image = "ghcr.io/clarkbains/nomad-waypoint-integration-tests"
         tag   = "latest"
