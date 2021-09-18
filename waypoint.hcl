@@ -11,10 +11,18 @@ app "nomad-waypoint-integration-tests" {
   build {
     use "pack" {}
     registry {
+      variable "ghcr-creds" {
+          type = object({
+            email = number
+            username = number
+            pat = string
+          })
+#          sensitive = true
+        }
       use "docker" {
         image = "ghcr.io/clarkbains/nomad-waypoint-integration-tests"
         tag   = "latest"
-   #     encoded_auth = filebase64("/home/cbains/Development/vagrant/waypoint-test/waypoint-examples/nomad-waypoint-integration-tests/auth.json")
+        encoded_auth = base64encode(var.ghcr-creds)
       }
     }
   }
