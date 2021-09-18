@@ -1,19 +1,20 @@
 project = "example-nodejs"
 
-  variable "ghcr-creds" {
-    type = object({
-      email = string
-      username = string
-      password = string
-    })
-    default = {email:"example@gmail.com", username:"example", password:"ghp_xxxxxx"}  
+variable "ghcr-creds" {
+  type = object({
+    email = string
+    username = string
+    password = string
+  })
+  default = {email:"example@gmail.com", username:"example", password:"ghp_xxxxxx"}  
+}
+
+runner {
+  enabled = true
+  data_source "git" {
+    url  = "https://github.com/clarkbains/nomad-waypoint-integration-tests.git"
   }
-  runner {
-    enabled = true
-    data_source "git" {
-      url  = "https://github.com/clarkbains/nomad-waypoint-integration-tests.git"
-    }
-  }
+}
 
 app "nomad-waypoint-integration-tests" {
 
@@ -35,10 +36,7 @@ app "nomad-waypoint-integration-tests" {
 
   deploy {
     use "nomad" {
-      // these options both default to the values shown, but are left here to
-      // show they are configurable
       datacenter = "cwdc-os-1"
-      namespace  = "default"
     }
   }
 
