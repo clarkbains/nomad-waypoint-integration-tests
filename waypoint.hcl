@@ -1,4 +1,4 @@
-project = "nomad-waypoint-integration-tests"
+project = "example-nodejs"
   runner {
     enabled = true
     data_source "git" {
@@ -10,6 +10,13 @@ app "nomad-waypoint-integration-tests" {
 
   build {
     use "pack" {}
+    registry {
+      use "docker" {
+        image = "ghcr.io/clarkbains/nomad-waypoint-integration-tests"
+        tag   = "latest"
+   #     encoded_auth = filebase64("/home/cbains/Development/vagrant/waypoint-test/waypoint-examples/nomad-waypoint-integration-tests/auth.json")
+      }
+    }
   }
 
 
