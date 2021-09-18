@@ -1,21 +1,20 @@
 project = "example-nodejs"
   runner {
     enabled = true
-
     data_source "git" {
-      url  = "https://github.com/hashicorp/waypoint-examples.git"
-      path = "docker/nodejs"
+      url  = "https://github.com/clarkbains/nomad-waypoint-integration-tests.git"
     }
   }
+
 app "waypoint-cd-test" {
 
   build {
     use "pack" {}
     registry {
       use "docker" {
-        image = "waypoint-cd-test"
-        tag   = "1"
-        local = true
+        image = "ghcr.io/clarkbains/waypoint-cd-test"
+        tag   = "latest"
+        encoded_auth = filebase64("/home/cbains/Development/vagrant/waypoint-test/waypoint-examples/nomad-waypoint-integration-tests/auth.json")
       }
     }
   }
