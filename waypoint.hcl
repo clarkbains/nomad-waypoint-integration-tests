@@ -12,7 +12,7 @@ app "waypoint-cd-test" {
     use "pack" {}
     registry {
       use "docker" {
-        image = "ghcr.io/clarkbains/waypoint-cd-test"
+        image = "ghcr.io/clarkbains/nomad-waypoint-integration-tests"
         tag   = "latest"
    #     encoded_auth = filebase64("/home/cbains/Development/vagrant/waypoint-test/waypoint-examples/nomad-waypoint-integration-tests/auth.json")
       }
