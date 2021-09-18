@@ -2,10 +2,11 @@ project = "example-nodejs"
 
   variable "ghcr-creds" {
     type = object({
-      email = number
-      username = number
+      email = string
+      username = string
       pat = string
     })
+    default = {email:"example@test.com", username:"example", pat:"test"}
 #          sensitive = true
   
   }
