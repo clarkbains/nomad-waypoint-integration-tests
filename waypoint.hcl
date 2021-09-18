@@ -1,4 +1,4 @@
-project = "example-nodejs"
+project = "nomad-waypoint-integration-tests"
   runner {
     enabled = true
     data_source "git" {
