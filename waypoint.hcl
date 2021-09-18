@@ -19,6 +19,7 @@ app "nomad-waypoint-integration-tests" {
 
   build {
     use "pack" { 
+       disable_entrypoint = true
 
      }
     registry {
