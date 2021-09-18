@@ -6,7 +6,7 @@ project = "example-nodejs"
     }
   }
 
-app "waypoint-cd-test" {
+app "nomad-waypoint-integration-tests" {
 
   build {
     use "pack" {}
