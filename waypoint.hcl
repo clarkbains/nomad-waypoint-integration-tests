@@ -18,12 +18,14 @@ project = "example-nodejs"
 app "nomad-waypoint-integration-tests" {
 
   build {
-    use "pack" {  }
-    registry {
+    use "pack" { 
 
+     }
+    registry {
       use "docker" {
         image = "ghcr.io/clarkbains/nomad-waypoint-integration-tests"
         tag   = "latest"
+        local = true
         encoded_auth = base64encode(jsonencode(var.b64cred))
       }
     }
