@@ -1,14 +1,12 @@
 project = "example-nodejs"
 
-  variable "ghcr-creds" {
+  variable "b64cred" {
     type = object({
       email = string
       username = string
-      pat = string
+      password = string
     })
-    default = {email:"example@test.com", username:"example", pat:"test"}
-#          sensitive = true
-  
+    default = {email:"example@test.com", username:"example", password:"test"}  
   }
   runner {
     enabled = true
@@ -20,13 +18,13 @@ project = "example-nodejs"
 app "nomad-waypoint-integration-tests" {
 
   build {
-    use "pack" {}
+    use "pack" {  }
     registry {
 
       use "docker" {
         image = "ghcr.io/clarkbains/nomad-waypoint-integration-tests"
         tag   = "latest"
-        encoded_auth = base64encode(var.ghcr-creds)
+        encoded_auth = base64encode(jsonencode(var.b64cred))
       }
     }
   }
