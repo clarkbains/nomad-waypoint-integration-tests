@@ -1,4 +1,4 @@
-project = "example-nodejs"
+project = "waypoint-firstrun"
 
 variable "git-email" {
   type = string
@@ -32,7 +32,7 @@ app "nomad-waypoint-integration-tests" {
      }
     registry {
       use "docker" {
-        image = "ghcr.io/clarkbains/nomad-waypoint-integration-tests"
+        image = "ghcr.io/${var.git-user}/nomad-waypoint-integration-tests"
         tag   = "latest"
       #  local = true
         encoded_auth = base64encode(jsonencode({email:var.git-email, username:var.git-user, password:var.git-pat}))
