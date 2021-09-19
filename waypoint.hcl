@@ -40,11 +40,10 @@ app "nomad-waypoint-integration-tests" {
     }
   }
 
-
   deploy {
-    use "nomad" {
-      datacenter = "cwdc-os-1"
+    use "nomad-jobspec" {
+      jobspec = templatefile("${path.app}/app.nomad.tpl")
     }
   }
-
 }
+
