@@ -1,13 +1,20 @@
 project = "example-nodejs"
 
-variable "ghcr-creds" {
-  type = object({
-    email = string
-    username = string
-    password = string
-  })
-  default = {email:"example@gmail.com", username:"example", password:"ghp_xxxxxx"}  
+variable "git-email" {
+  type = string
+  default = "example@example.com"  
 }
+
+variable "git-user" {
+  type = string
+  default = "example"  
+}
+
+variable "git-pat" {
+  type = string
+  default = "ghp_xxxx"  
+}
+
 
 runner {
   enabled = true
@@ -28,7 +35,7 @@ app "nomad-waypoint-integration-tests" {
         image = "ghcr.io/clarkbains/nomad-waypoint-integration-tests"
         tag   = "latest"
       #  local = true
-        encoded_auth = base64encode(jsonencode(var.ghcr-creds))
+        encoded_auth = base64encode(jsonencode({email:var.git-email, username:var.git-user, password:var.git-pat}))
       }
     }
   }
